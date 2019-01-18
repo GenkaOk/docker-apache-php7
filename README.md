@@ -1,18 +1,21 @@
-apache-php7
+php7.0-apache2
 ===================================
+This is fork `bylexus/apache-php7`
 
-A Docker image based on Ubuntu, serving PHP 7 running as Apache Module. Useful for Web developers in need for a fixed PHP version. In addition, the `error_reporting` setting in php.ini is configurable per container via environment variable.
+GitHub original repository: `https://github.com/bylexus/docker-apache-php7`
+
+A Docker image based on Debian, serving PHP 7 running as Apache Module. Useful for Web developers in need for a fixed PHP version. In addition, the `error_reporting` setting in php.ini is configurable per container via environment variable.
 
 Tags
 -----
 
-* latest: Ubuntu 16.04 (LTS), Apache 2.4, PHP 7.0.x with support for setting `error_reporting`
+* latest: Debian Jessie 8.0 (LTS), Apache 2.4, PHP 7.0.x with support for setting `error_reporting`
 
 Usage
 ------
 
 ```
-$ docker run -d -P bylexus/apache-php7
+$ docker run -d -P genkaok/php7.0-apache2
 ```
 
 With all the options:
@@ -21,7 +24,7 @@ With all the options:
 $ docker run -d -p 8080:80 \
     -v /home/user/webroot:/var/www \
     -e PHP_ERROR_REPORTING='E_ALL & ~E_STRICT' \
-    bylexus/apache-php7
+    genkaok/php7.0-apache2
 ```
 
 * `-v [local path]:/var/www` maps the container's webroot to a local path
@@ -37,13 +40,13 @@ Apache is configured to log both access and error log to STDOUT. So you can simp
 
 Installed packages
 -------------------
-* Ubuntu Server 16.04, based on ubuntu docker image
+* Debian Jessie 8, based on debian docker image
 * apache2
+* curl
 * php7.0
 * php7.0-cli
+* php7.0-apcu
 * libapache2-mod-php7.0
-* php-apcu
-* php-xdebug
 * php7.0-gd
 * php7.0-json
 * php7.0-ldap
@@ -56,7 +59,16 @@ Installed packages
 * php7.0-zip
 * php7.0-soap
 * php7.0-opcache
-* composer
+* php7.0-pdo
+* php7.0-curl
+* php7.0-igbinary
+* php7.0-bz2
+* php7.0-geoip
+* php7.0-imagick
+* php7.0-imap
+* php7.0-mcrypt
+* php7.0-redis
+* php7.0-xmlrpc
 
 Default Configurations
 ----------------------
@@ -65,4 +77,3 @@ Default Configurations
 * php.ini:
   * display_errors = On
   * error_reporting = E_ALL (default, overridable per env variable)
-
